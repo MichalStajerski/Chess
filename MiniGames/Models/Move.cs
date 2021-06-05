@@ -44,7 +44,7 @@ namespace Chess
                 square.Piece = null;
             }
 
-            //Castle
+            //Roszada
             if (moveType == MoveType.Castle)
             {
                 var dir = Start.Position.GetDirection(End.Position);
@@ -54,7 +54,7 @@ namespace Chess
                     board.GetSquareAtPosition(End.Position + new Position(dir.PosX * -1, dir.PosY)));
             }
 
-            //Standard
+            //Standardowy ruch
             if (moveType == MoveType.Normal)
             {
                 lostPiece = board.ShiftPiece(Start, End);

@@ -4,6 +4,5 @@
     {
         White,
         Black,
-        Blue
     }
 }
