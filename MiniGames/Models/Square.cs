@@ -36,8 +36,8 @@ namespace Chess
             {
                 Color = Color,
                 Name = Name,
-                Position = Position.Clone() as Position,
-                Piece = Piece?.Clone() as Piece
+                Position = Position,
+                Piece = Piece
             };
         }
 
