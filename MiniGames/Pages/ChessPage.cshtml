@@ -21,7 +21,7 @@
 
     <div id="findOpponent" class="row m-5">
         <div class="mx-auto my-auto text-center">
-            <p id="status" class="row help-block m-3 text-center">Podaj swoją nazwę uzytkownika.</p>
+            <p style="color:white" id="status" class="row help-block m-3 text-center">Podaj swoją nazwę uzytkownika.</p>
             <div class="form-inline">
                 <div class="form-group mr-2" id="usernameGroup">                  
                     <input type="text" class="form-control" id="username" autofocus />
@@ -60,6 +60,7 @@
 
 
 
+
 <script type="text/javascript">
     $(function () {
         var connection = new signalR.HubConnectionBuilder().withUrl("/gameHub").build();
@@ -90,7 +91,7 @@
         connection.on("GameOver", function (gameOver, winner) {
             var t = @(Html.EnumToString<GameOver>());
             document.getElementById('playerStatus').innerText = winner.userName + "przegrał przez mata ";
-            document.getElementById('playerStatus').style.color = "purple";
+            document.getElementById('playerStatus').style.color = "orange";
             endGame();
         });
         connection.on("WaitingList", function () {
@@ -118,6 +119,7 @@
                 Update(game);
                 playerName = (playerId == game.player1.id) ? game.player1.userName : game.player2.userName;
                 document.getElementById('playerName').innerText = "Nazwa gracza: " + playerName;
+                document.getElementById('playerName').style.color = "white";
                 displayWindowSize();
                 updateStatus(game.movingPlayer.userName);
             }
@@ -203,7 +205,9 @@
         function setupPlayground(game) {
             var t = @(Html.EnumToString<Color>());
             document.getElementById('ownListHeader').innerText = t[playerColor];
+            document.getElementById('ownListHeader').style.color = "white";
             document.getElementById('enemyListHeader').innerText = playerColor == 0 ? t[1] : t[0];
+            document.getElementById('enemyListHeader').style.color = "white";
         }
         function resetBoard() {
             var board = document.getElementById('board');
